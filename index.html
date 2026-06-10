@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nagan Music School — San Pedro Sula, Honduras</title>
+<meta name="description" content="Escuela de música en San Pedro Sula. Clases de guitarra, piano, batería, bajo, canto, violín y producción musical. Más de 7 años formando músicos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #122040;
+    --navy-light: #1C3160;
+    --gold: #C9960A;
+    --gold-light: #E5B420;
+    --gold-pale: #F5E6B0;
+    --gold-very-pale: #FDF7E3;
+    --white: #FFFFFF;
+    --off-white: #F8F6F0;
+    --text-dark: #0A1628;
+    --text-mid: #3A4A6B;
+    --text-light: #6B7A99;
+    --border: rgba(201,150,10,0.2);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,150,10,0.3);
+    padding: 0 2rem; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold-light); text-decoration: none; letter-spacing: 0.02em; }
+  .nav-logo span { color: var(--white); font-weight: 400; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 0.5rem 1.25rem; border-radius: 4px; font-weight: 600 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 99; background: rgba(10,22,40,0.98); padding: 1.5rem 2rem; border-bottom: 1px solid rgba(201,150,10,0.2); flex-direction: column; gap: 1rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.95rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  /* HERO */
+  #hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; position: relative; overflow: hidden; padding: 80px 2rem 4rem; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,150,10,0.12) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(28,49,96,0.8) 0%, transparent 60%); }
+  .hero-lines { position: absolute; inset: 0; overflow: hidden; }
+  .hero-lines::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border: 1px solid rgba(201,150,10,0.12); border-radius: 50%; }
+  .hero-lines::after { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border: 1px solid rgba(201,150,10,0.08); border-radius: 50%; }
+  .hero-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .hero-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 1.5rem; }
+  .hero-title em { font-style: normal; color: var(--gold-light); }
+  .hero-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 2.5rem; max-width: 480px; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); padding: 0.875rem 2rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; text-decoration: none; letter-spacing: 0.02em; transition: all 0.2s; border: none; cursor: pointer; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); padding: 0.875rem 2rem; border-radius: 4px; font-weight: 500; font-size: 0.9rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.25); transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(201,150,10,0.2); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
+  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* HERO VISUAL — teacher photo collage */
+  .hero-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .hero-photo { border-radius: 8px; overflow: hidden; border: 1px solid rgba(201,150,10,0.2); }
+  .hero-photo img { width: 100%; height: 180px; object-fit: cover; object-position: top; display: block; transition: transform 0.4s; }
+  .hero-photo:hover img { transform: scale(1.04); }
+  .hero-photo.tall img { height: 374px; }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text-dark); line-height: 1.2; margin-bottom: 1rem; }
+  .section-lead { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; max-width: 560px; }
+
+  /* ABOUT */
+  #about { background: var(--off-white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-text .section-lead { max-width: 100%; margin-bottom: 2rem; }
+  .about-pillars { display: flex; flex-direction: column; gap: 1.25rem; }
+  .about-pillar { display: flex; gap: 1rem; align-items: flex-start; }
+  .pillar-icon { width: 36px; height: 36px; flex-shrink: 0; background: var(--gold-pale); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+  .pillar-title { font-weight: 600; font-size: 0.9rem; color: var(--text-dark); margin-bottom: 2px; }
+  .pillar-desc { font-size: 0.83rem; color: var(--text-light); line-height: 1.5; }
+  .about-photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .about-photo { border-radius: 10px; overflow: hidden; border: 1px solid rgba(201,150,10,0.15); }
+  .about-photo img { width: 100%; height: 220px; object-fit: cover; object-position: top; display: block; transition: transform 0.4s; }
+  .about-photo:hover img { transform: scale(1.04); }
+  .about-photo.tall { grid-row: span 2; }
+  .about-photo.tall img { height: 454px; }
+
+  /* COURSES */
+  #courses { background: var(--white); }
+  .courses-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; gap: 2rem; }
+  .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+  .course-card { background: var(--white); border: 1px solid #E5E0D0; border-radius: 10px; overflow: hidden; transition: all 0.2s; position: relative; }
+  .course-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+  .course-card:hover { border-color: rgba(201,150,10,0.4); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(10,22,40,0.08); }
+  .course-card:hover::after { transform: scaleX(1); }
+  .course-photo { width: 100%; height: 200px; object-fit: cover; object-position: center 15%; display: block; }
+  .course-body { padding: 1.25rem 1.25rem 1.5rem; }
+  .course-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.4rem; }
+  .course-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.55; }
+  .course-tag { display: inline-block; margin-top: 0.75rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: var(--gold-very-pale); padding: 3px 8px; border-radius: 3px; }
+  .course-card.featured { border-color: rgba(201,150,10,0.35); background: var(--gold-very-pale); }
+
+  /* TEACHERS */
+  #teachers { background: var(--navy); }
+  #teachers .section-title { color: var(--white); }
+  #teachers .section-lead { color: rgba(255,255,255,0.6); }
+  .teachers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+  .teacher-card { border-radius: 10px; overflow: hidden; border: 1px solid rgba(201,150,10,0.2); position: relative; }
+  .teacher-card img { width: 100%; height: 280px; object-fit: cover; object-position: center 15%; display: block; transition: transform 0.4s; }
+  .teacher-card:hover img { transform: scale(1.04); }
+  .teacher-info { padding: 0.875rem 1.1rem 1.1rem; background: rgba(10,22,40,0.85); border-top: 1px solid rgba(201,150,10,0.2); }
+  .teacher-instrument { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+  .teacher-name { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.95); }
+
+  /* MODALITIES */
+  #modalities { background: var(--navy); border-top: 1px solid rgba(201,150,10,0.1); }
+  #modalities .section-title { color: var(--white); }
+  .modalities-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+  .modality-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,150,10,0.2); border-radius: 10px; padding: 2rem; transition: background 0.2s; }
+  .modality-card:hover { background: rgba(255,255,255,0.08); }
+  .modality-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .modality-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold-light); margin-bottom: 0.5rem; }
+  .modality-desc { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 1.25rem; }
+  .modality-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .modality-features li { font-size: 0.82rem; color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 0.5rem; }
+  .modality-features li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+  /* WHY */
+  #why { background: var(--off-white); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+  .why-card { text-align: center; padding: 2rem 1.5rem; background: var(--white); border-radius: 10px; border: 1px solid #E5E0D0; transition: all 0.2s; }
+  .why-card:hover { border-color: rgba(201,150,10,0.3); transform: translateY(-2px); }
+  .why-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
+  .why-title { font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem; font-size: 0.95rem; }
+  .why-desc { font-size: 0.83rem; color: var(--text-light); line-height: 1.6; }
+
+  /* GALLERY */
+  #gallery { background: var(--white); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-top: 3rem; }
+  .gallery-item { border-radius: 8px; overflow: hidden; border: 1px solid rgba(201,150,10,0.1); }
+  .gallery-item img { width: 100%; height: 200px; object-fit: cover; object-position: top; display: block; transition: transform 0.4s; }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-item.wide img { height: 200px; }
+
+  /* LOCATION */
+  #location { background: var(--off-white); }
+  .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .location-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .location-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .location-item-icon { width: 40px; height: 40px; flex-shrink: 0; background: var(--gold-pale); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+  .location-item-title { font-weight: 600; font-size: 0.875rem; color: var(--text-dark); margin-bottom: 2px; }
+  .location-item-text { font-size: 0.83rem; color: var(--text-light); line-height: 1.5; }
+  .map-embed { border-radius: 10px; overflow: hidden; border: 1px solid #E5E0D0; height: 340px; }
+  .map-embed iframe { width: 100%; height: 100%; border: none; }
+
+  /* CTA */
+  #cta { background: var(--navy); text-align: center; padding: 7rem 2rem; }
+  .cta-inner { max-width: 640px; margin: 0 auto; }
+  .cta-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--white); line-height: 1.2; margin-bottom: 1rem; }
+  .cta-title em { font-style: normal; color: var(--gold-light); }
+  .cta-sub { font-size: 1rem; color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; line-height: 1.7; }
+  .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer { background: #060E1C; padding: 3rem 2rem 2rem; border-top: 1px solid rgba(201,150,10,0.15); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+  .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold-light); margin-bottom: 0.75rem; }
+  .footer-brand-desc { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 280px; }
+  .footer-heading { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom { max-width: 1100px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+  /* WA FLOAT */
+  .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: all 0.2s; }
+  .wa-float:hover { transform: scale(1.1); }
+
+  /* RESPONSIVE */
+  .student-item img:hover { transform: scale(1.05); }
+  @media (max-width: 900px) {
+    .students-grid { grid-template-columns: repeat(4, 1fr) !important; }
+    .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-visual { grid-template-columns: repeat(3, 1fr); }
+    .hero-photo.tall img { height: 180px; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .modalities-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .location-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .courses-header { flex-direction: column; align-items: flex-start; }
+    .about-photo.tall img { height: 220px; }
+    .about-photo.tall { grid-row: span 1; }
+  }
+  @media (max-width: 600px) {
+    .students-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    section { padding: 4rem 1.25rem; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .hero-visual { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item.wide { grid-column: span 2; }
+    .hero-actions { flex-direction: column; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .teachers-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* MODALS */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 500;
+    background: rgba(5,10,20,0.92); backdrop-filter: blur(8px);
+    align-items: center; justify-content: center; padding: 1.5rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--navy); border: 1px solid rgba(201,150,10,0.3);
+    border-radius: 12px; max-width: 860px; width: 100%;
+    max-height: 90vh; overflow-y: auto; position: relative;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  }
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem; z-index: 10;
+    background: rgba(255,255,255,0.1); border: none; cursor: pointer;
+    width: 36px; height: 36px; border-radius: 50%;
+    color: white; font-size: 1.1rem; display: flex;
+    align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: rgba(201,150,10,0.3); }
+  .modal-plan-img {
+    width: 100%; border-radius: 10px; display: block;
+  }
+  .modal-footer {
+    padding: 1.25rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(201,150,10,0.2); flex-wrap: wrap; gap: 0.75rem;
+  }
+  .modal-note { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+
+<nav style="justify-content:center; position:relative;">
+  <ul class="nav-links" style="position:absolute; left:2rem;">
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#courses">Cursos</a></li>
+    <li><a href="#teachers">Maestros</a></li>
+  </ul>
+  <a href="#hero" class="nav-logo" style="display:flex; flex-direction:column; align-items:center; gap:2px;">
+    <img src="img/logo.png" alt="Nagan Music School" style="height:40px; width:auto; filter: brightness(0) invert(1);">
+  </a>
+  <ul class="nav-links" style="position:absolute; right:2rem;">
+    <li><a href="#students">Estudiantes</a></li>
+    <li><a href="#location">Ubicación</a></li>
+    <li><a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20inscribirme%20en%20Nagan%20Music%20School" target="_blank" class="nav-cta">Inscríbete</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menú" style="position:absolute; right:1.25rem;">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">Nosotros</a>
+  <a href="#courses" onclick="closeMenu()">Cursos</a>
+  <a href="#teachers" onclick="closeMenu()">Maestros</a>
+  <a href="#students" onclick="closeMenu()">Estudiantes</a>
+  <a href="#location" onclick="closeMenu()">Ubicación</a>
+  <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20inscribirme%20en%20Nagan%20Music%20School" target="_blank">💬 Inscríbete por WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content" style="grid-template-columns:1fr; text-align:center; max-width:700px;">
+    <div>
+      <div style="margin-bottom:2rem;">
+        <img src="img/logo.png" alt="Nagan Music School" style="height:120px; width:auto; filter: brightness(0) invert(1);">
+      </div>
+      <p class="hero-eyebrow" style="justify-content:center;">San Pedro Sula, Honduras</p>
+      <h1 class="hero-title">Donde la música<br>se convierte en <em>vocación</em></h1>
+      <p class="hero-subtitle" style="margin:0 auto 2.5rem;">Formamos músicos con propósito. Enseñamos principios universales de la música que te servirán en cualquier género, escenario o contexto.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20inscribirme%20en%20Nagan%20Music%20School" target="_blank" class="btn-primary">💬 Quiero inscribirme</a>
+        <a href="#courses" class="btn-outline">Ver cursos</a>
+      </div>
+      <div class="hero-stats" style="justify-content:center;">
+        <div><div class="stat-num">8+</div><div class="stat-label">Años formando músicos</div></div>
+        <div><div class="stat-num">250-300</div><div class="stat-label">Estudiantes por semestre</div></div>
+        <div><div class="stat-num">4</div><div class="stat-label">Recitales al año</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-eyebrow">Nuestra historia</p>
+        <h2 class="section-title">8 años formando músicos en Honduras y el mundo</h2>
+        <p class="section-lead">Nagan Music School nació con una convicción: que cualquier persona puede desarrollar el don musical que lleva dentro. Hoy somos una comunidad de más de 250 estudiantes activos en Honduras, y a través de nuestras clases en línea hemos llegado a Estados Unidos, México, España y Guatemala.</p>
+        <div style="margin: 1.5rem 0; display:flex; flex-direction:column; gap:1rem;">
+          <div style="border-left: 3px solid var(--gold); padding-left: 1rem;">
+            <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.3rem;">Misión</div>
+            <p style="font-size:0.875rem; color:var(--text-mid); line-height:1.65;">Formar músicos integrales a través de una enseñanza accesible, práctica y de calidad, cultivando en cada estudiante el amor por la música y las herramientas técnicas para expresarse en cualquier género o contexto musical.</p>
+          </div>
+          <div style="border-left: 3px solid var(--gold); padding-left: 1rem;">
+            <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.3rem;">Visión</div>
+            <p style="font-size:0.875rem; color:var(--text-mid); line-height:1.65;">Ser la escuela de música de referencia en Honduras, reconocida por transformar vidas a través de la música y por desarrollar músicos capaces de brillar en cualquier escenario.</p>
+          </div>
+        </div>
+        <div style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; background: var(--navy); border-radius: 8px; border: 1px solid rgba(201,150,10,0.25);">
+          <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">¿Por qué Nagan?</div>
+          <p style="font-size:0.875rem; color:rgba(255,255,255,0.8); line-height:1.75; margin-bottom:0.5rem;"><em style="font-style:italic; color:var(--gold-light);">Nagan</em> (נָגַן) es una palabra del hebreo antiguo que significa <em style="font-style:italic;">músico</em> — específicamente, aquel que toca con tanto propósito que transforma el ambiente a su alrededor. No es solo quien ejecuta notas: es quien mueve algo en las personas que escuchan.</p>
+          <p style="font-size:0.875rem; color:rgba(255,255,255,0.8); line-height:1.75;">Elegimos ese nombre porque define exactamente lo que queremos formar: músicos que no solo dominan su instrumento, sino que tienen algo que decir con él. Músicos que cuando tocan, algo cambia — en la vida y en el corazón de quienes los escuchan.</p>
+        </div>
+
+        <div class="about-pillars">
+          <div class="about-pillar">
+            <div class="pillar-icon">🎯</div>
+            <div>
+              <div class="pillar-title">Enseñanza con propósito</div>
+              <div class="pillar-desc">Enseñamos principios universales de la música que sirven a cualquier músico, independientemente del género o contexto en que quiera desarrollarse.</div>
+            </div>
+          </div>
+          <div class="about-pillar">
+            <div class="pillar-icon">📈</div>
+            <div>
+              <div class="pillar-title">Avance basado en progreso</div>
+              <div class="pillar-desc">Cada estudiante avanza a su propio ritmo. Celebramos cada logro, sin importar el punto de partida.</div>
+            </div>
+          </div>
+          <div class="about-pillar">
+            <div class="pillar-icon">🎭</div>
+            <div>
+              <div class="pillar-title">Experiencia en escenario</div>
+              <div class="pillar-desc">Cada semestre organizamos recitales donde los estudiantes presentan lo aprendido frente a sus familias.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-photo-grid">
+        <div class="about-photo tall"><img src="img/teacher_violin.jpg" alt="Keylin Bajurto"></div>
+        <div class="about-photo"><img src="img/teacher_piano.jpg" alt="Deuel Morales - Piano"></div>
+        <div class="about-photo"><img src="img/teacher_bajo.jpg" alt="Jarib Laínez - Bajo"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="section-inner">
+    <div class="courses-header">
+      <div>
+        <p class="section-eyebrow">Lo que enseñamos</p>
+        <h2 class="section-title">Nuestros cursos</h2>
+      </div>
+      <p style="font-size:0.9rem; color: var(--text-light); max-width: 320px; line-height:1.6;">De principiante a avanzado, tenemos el curso que necesitas para desarrollar tu talento.</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card" onclick="openModal('plan_guitarra')" style="cursor:pointer;">
+        <img src="img/teacher_guitarra.jpg" alt="Curso de guitarra" class="course-photo">
+        <div class="course-body">
+          <div class="course-name">Guitarra</div>
+          <div class="course-desc">Acústica, eléctrica y contemporánea. Desde acordes básicos hasta improvisación y teoría musical aplicada.</div>
+          <span class="course-tag">Todos los niveles</span>
+        </div>
+      </div>
+      <div class="course-card" onclick="openModal('plan_piano')" style="cursor:pointer;">
+        <img src="img/teacher_piano.jpg" alt="Curso de piano" class="course-photo">
+        <div class="course-body">
+          <div class="course-name">Piano</div>
+          <div class="course-desc">Técnica clásica y moderna. Aprende a leer partituras, tocar por cifrado y acompañar con fluidez.</div>
+          <span class="course-tag">Todos los niveles</span>
+        </div>
+      </div>
+      <div class="course-card" onclick="openModal('plan_bateria')" style="cursor:pointer;">
+        <img src="img/teacher_bateria.jpg" alt="Curso de batería" class="course-photo">
+        <div class="course-body">
+          <div class="course-name">Batería</div>
+          <div class="course-desc">Ritmo, coordinación y groove. Formación para bateristas de banda, escenario y sesiones de estudio.</div>
+          <span class="course-tag">Todos los niveles</span>
+        </div>
+      </div>
+      <div class="course-card" onclick="openModal('plan_bajo')" style="cursor:pointer;">
+        <img src="img/teacher_bajo.jpg" alt="Curso de bajo" class="course-photo">
+        <div class="course-body">
+          <div class="course-name">Bajo Eléctrico</div>
+          <div class="course-desc">El pilar del groove. Técnica de dos y cuatro dedos, slap, lectura de cifrado y repertorio contemporáneo.</div>
+          <span class="course-tag">Todos los niveles</span>
+        </div>
+      </div>
+      <div class="course-card" onclick="openModal('plan_canto')" style="cursor:pointer;">
+        <img src="img/teacher_canto.jpg" alt="Curso de canto" class="course-photo">
+        <div class="course-body">
+          <div class="course-name">Canto</div>
+          <div class="course-desc">Técnica vocal, respiración, proyección y expresión. Ideal para cantantes, coros y solistas.</div>
+          <span class="course-tag">Todos los niveles</span>
+        </div>
+      </div>
+      <div class="course-card" onclick="openModal('plan_violin')" style="cursor:pointer;">
+        <img src="img/teacher_violin.jpg" alt="Curso de violín" class="course-photo" style="object-position: center 30%;">
+        <div class="course-body">
+          <div class="course-name">Violín</div>
+          <div class="course-desc">Postura, afinación y repertorio clásico y contemporáneo. Un instrumento con carácter único.</div>
+          <span class="course-tag">Todos los niveles</span>
+        </div>
+      </div>
+      <div class="course-card featured" onclick="openModal('plan_pmusical')" style="cursor:pointer;">
+        <img src="img/teacher_pmusical.jpg" alt="Producción Musical" class="course-photo">
+        <div class="course-body">
+          <div class="course-name">Producción Musical</div>
+          <div class="course-desc">Aprende a producir música desde cero usando Logic Pro. Composición, mezcla y masterización digital.</div>
+          <span class="course-tag" style="background: var(--gold-pale); color: #7A5500;">Nuevo · Módulo I</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section id="teachers">
+  <div class="section-inner">
+    <p class="section-eyebrow" style="color: var(--gold);">Quiénes te enseñan</p>
+    <h2 class="section-title">Nuestros maestros</h2>
+    <p class="section-lead" style="color:rgba(255,255,255,0.6);">Músicos apasionados y docentes comprometidos con el crecimiento de cada estudiante.</p>
+    <div class="teachers-grid">
+      <div class="teacher-card">
+        <img src="img/teacher_guitarra.jpg" alt="Jorge Castellanos">
+        <div class="teacher-info">
+          <div class="teacher-instrument">Guitarra</div>
+          <div class="teacher-name">Jorge Castellanos</div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="img/teacher_bajo.jpg" alt="Jarib Laínez">
+        <div class="teacher-info">
+          <div class="teacher-instrument">Bajo Eléctrico</div>
+          <div class="teacher-name">Jarib Laínez</div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="img/teacher_piano.jpg" alt="Deuel Morales">
+        <div class="teacher-info">
+          <div class="teacher-instrument">Piano · Coord. Privadas</div>
+          <div class="teacher-name">Deuel Morales</div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="img/teacher_violin.jpg" alt="Keylin Bajurto">
+        <div class="teacher-info">
+          <div class="teacher-instrument">Violín · Coord. Grupales</div>
+          <div class="teacher-name">Keylin Bajurto</div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="img/teacher_canto.jpg" alt="Dariela Pérez">
+        <div class="teacher-info">
+          <div class="teacher-instrument">Canto</div>
+          <div class="teacher-name">Dariela Pérez</div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="img/teacher_bateria.jpg" alt="Anthony Guardado">
+        <div class="teacher-info">
+          <div class="teacher-instrument">Batería</div>
+          <div class="teacher-name">Anthony Guardado</div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="img/teacher_pmusical.jpg" alt="Juan Marcos Ávila">
+        <div class="teacher-info">
+          <div class="teacher-instrument">Director General</div>
+          <div class="teacher-name">Juan Marcos Ávila</div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="img/teacher_admin.jpg" alt="David Ávila">
+        <div class="teacher-info">
+          <div class="teacher-instrument">Servicio al Cliente</div>
+          <div class="teacher-name">David Ávila</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODALITIES -->
+<section id="modalities">
+  <div class="section-inner">
+    <p class="section-eyebrow" style="color: var(--gold);">Cómo aprendes</p>
+    <h2 class="section-title">Elige tu modalidad</h2>
+    <p class="section-lead" style="color: rgba(255,255,255,0.6);">Dos formas de aprender, una misma calidad de enseñanza.</p>
+    <div class="modalities-grid">
+      <div class="modality-card">
+        <div class="modality-icon">👥</div>
+        <div class="modality-name">Clases Grupales</div>
+        <div class="modality-desc">Aprende en un ambiente dinámico y motivador. Comparte el proceso con otros estudiantes y disfruta la experiencia de hacer música en grupo.</div>
+        <ul class="modality-features">
+          <li>Clases en grupo con ambiente dinámico</li>
+          <li>Ambiente colaborativo</li>
+          <li>Precio accesible</li>
+          <li>Horarios flexibles</li>
+        </ul>
+      </div>
+      <div class="modality-card">
+        <div class="modality-icon">🎯</div>
+        <div class="modality-name">Clases Privadas</div>
+        <div class="modality-desc">Atención personalizada y avance acelerado. El docente diseña el programa de acuerdo a tus metas y velocidad de aprendizaje.</div>
+        <ul class="modality-features">
+          <li>Atención 100% personalizada</li>
+          <li>Avance a tu propio ritmo</li>
+          <li>Horario a convenir</li>
+          <li>Ideal para objetivos específicos</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2.5rem;">
+      <a href="https://wa.me/50498267794?text=Hola,%20quisiera%20saber%20los%20precios%20y%20horarios%20disponibles" target="_blank" class="btn-primary">Consultar precios y horarios</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-inner">
+    <p class="section-eyebrow">¿Por qué Nagan?</p>
+    <h2 class="section-title">Una escuela con identidad propia</h2>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-number">8+</div><div class="why-title">Años de trayectoria</div><div class="why-desc">Una escuela consolidada con experiencia real formando músicos en Honduras.</div></div>
+      <div class="why-card"><div class="why-number" style="font-size:1.5rem;">250-300</div><div class="why-title">Estudiantes cada semestre</div><div class="why-desc">Una comunidad activa de músicos en formación que crece cada ciclo.</div></div>
+      <div class="why-card"><div class="why-number">4</div><div class="why-title">Recitales al año</div><div class="why-desc">Dos recitales por semestre — cuatro al año. Tu música en un escenario real.</div></div>
+      <div class="why-card"><div class="why-number">7</div><div class="why-title">Docentes especializados</div><div class="why-desc">Maestros comprometidos con el crecimiento de cada estudiante.</div></div>
+      <div class="why-card"><div class="why-number">🎵</div><div class="why-title">Enseñanza universal</div><div class="why-desc">Principios musicales que sirven a cualquier músico, en cualquier género o contexto.</div></div>
+      <div class="why-card"><div class="why-number">🎓</div><div class="why-title">Aprendizaje con propósito</div><div class="why-desc">No solo técnica — cultivamos el amor por la música desde el primer día.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENTS -->
+<section id="students" style="background: var(--off-white); padding-bottom: 2rem;">
+  <div class="section-inner">
+    <p class="section-eyebrow">Nuestra comunidad</p>
+    <h2 class="section-title">Nuestros estudiantes</h2>
+    <p class="section-lead">Músicos de todas las edades formándose con pasión en Nagan.</p>
+    <div class="students-grid" style="margin-top:2.5rem; display:grid; grid-template-columns: repeat(5, 1fr); gap:0.75rem;">
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st01.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st02.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st03.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st04.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st05.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st06.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st07.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st08.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st09.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st10.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st11.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st12.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st13.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st14.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st15.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st16.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st17.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st18.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st19.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st20.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st21.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st22.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st23.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st24.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st25.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st26.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st27.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st28.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st29.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st30.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st31.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st32.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st33.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st34.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st35.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st36.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st37.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st38.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st39.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st40.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st41.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st42.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st43.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st44.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st45.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st46.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st47.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st48.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st49.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st50.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st51.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st52.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st53.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st54.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st55.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st56.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+      <div class="student-item" style="border-radius:8px; overflow:hidden; border:1px solid rgba(201,150,10,0.1);"><img src="img/st57.jpg" alt="Estudiante Nagan" style="width:100%; height:240px; object-fit:cover; object-position:top; display:block; transition:transform 0.4s;"></div>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.82rem; color:var(--text-light); text-align:center;">Únete a nuestra comunidad · <strong>@naganmusicschool</strong></p>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="section-inner">
+    <p class="section-eyebrow">Dónde estamos</p>
+    <h2 class="section-title">Encuéntranos</h2>
+    <div class="location-grid">
+      <div class="location-info">
+        <div class="location-item">
+          <div class="location-item-icon">📍</div>
+          <div>
+            <div class="location-item-title">Dirección</div>
+            <div class="location-item-text">Jardines del Valle, frente a Villas Palermo<br>San Pedro Sula, Cortés, Honduras</div>
+          </div>
+        </div>
+        <div class="location-item">
+          <div class="location-item-icon">💬</div>
+          <div>
+            <div class="location-item-title">WhatsApp</div>
+            <div class="location-item-text">Escríbenos para horarios, precios e inscripciones. Respondemos rápido.</div>
+          </div>
+        </div>
+        <div class="location-item">
+          <div class="location-item-icon">📱</div>
+          <div>
+            <div class="location-item-title">Redes sociales</div>
+            <div class="location-item-text">Instagram, Facebook y TikTok · @naganmusicschool</div>
+          </div>
+        </div>
+        <div class="location-item">
+          <div class="location-item-icon">🗓</div>
+          <div>
+            <div class="location-item-title">Inscripciones abiertas</div>
+            <div class="location-item-text">Segundo semestre 2026 — inicio en julio. Cupos limitados.</div>
+          </div>
+        </div>
+        <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20inscribirme%20en%20Nagan%20Music%20School" target="_blank" class="btn-primary" style="width: fit-content;">💬 Contactar por WhatsApp</a>
+      </div>
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15493.2!2d-88.0403!3d15.4889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f650f44e4e9d9d9%3A0x0!2sJardines%20del%20Valle%2C%20San%20Pedro%20Sula!5e0!3m2!1ses!2shn!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Nagan Music School ubicación"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner">
+    <p class="section-eyebrow" style="justify-content: center; color: var(--gold);">Empieza hoy</p>
+    <h2 class="cta-title">Tu historia musical<br>comienza <em>aquí</em></h2>
+    <p class="cta-sub">Las inscripciones para el segundo semestre 2026 están abiertas. Cupos limitados. Escríbenos y reserva el tuyo.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20inscribirme%20en%20Nagan%20Music%20School" target="_blank" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">💬 Inscribirse por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div style="margin-bottom:0.75rem;">
+        <img src="img/logo.png" alt="Nagan Music School" style="height:48px; width:auto; filter: brightness(0) invert(1); opacity:0.9;">
+      </div>
+
+      <p class="footer-brand-desc">Formando músicos con propósito en San Pedro Sula desde hace más de 8 años. Donde la música se convierte en vocación.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Cursos</div>
+      <ul class="footer-links">
+        <li><a href="#courses">Guitarra</a></li>
+        <li><a href="#courses">Piano</a></li>
+        <li><a href="#courses">Batería</a></li>
+        <li><a href="#courses">Bajo</a></li>
+        <li><a href="#courses">Canto</a></li>
+        <li><a href="#courses">Violín</a></li>
+        <li><a href="#courses">Producción Musical</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/50498267794" target="_blank">WhatsApp</a></li>
+        <li><a href="#location">Nuestra ubicación</a></li>
+        <li><a href="https://instagram.com/naganmusicschool" target="_blank">Instagram</a></li>
+        <li><a href="https://facebook.com/naganmusicschool" target="_blank">Facebook</a></li>
+        <li><a href="https://tiktok.com/@naganmusicschool" target="_blank">TikTok</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Nagan Music School · naganmusicschool.com</div>
+    <div class="footer-copy">San Pedro Sula, Honduras</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20inscribirme%20en%20Nagan%20Music%20School" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.11 1.529 5.832L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.031-1.388l-.36-.214-3.733.888.938-3.63-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.569 2.182 12 2.182S21.818 6.57 21.818 12c0 5.43-4.387 9.818-9.818 9.818z"/>
+  </svg>
+</a>
+
+<script>
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.querySelector('.nav-hamburger');
+  if (!menu.contains(e.target) && !btn.contains(e.target)) menu.classList.remove('open');
+});
+</script>
+
+<!-- MODALS PLANES DE ESTUDIO -->
+<div class="modal-overlay" id="modal-plan_guitarra" onclick="closeModalOutside(event, 'plan_guitarra')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('plan_guitarra')">✕</button>
+    <img src="img/plan_guitarra.jpg" alt="Plan de estudio Guitarra" class="modal-plan-img">
+    <div class="modal-footer">
+      <span class="modal-note">Disponibilidad en modalidad presencial y en línea.</span>
+      <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20el%20curso%20de%20Guitarra" target="_blank" class="btn-primary" style="font-size:0.85rem; padding:0.6rem 1.25rem;">💬 Quiero inscribirme</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-plan_piano" onclick="closeModalOutside(event, 'plan_piano')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('plan_piano')">✕</button>
+    <img src="img/plan_piano.jpg" alt="Plan de estudio Piano" class="modal-plan-img">
+    <div class="modal-footer">
+      <span class="modal-note">Disponibilidad en modalidad presencial y en línea.</span>
+      <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20el%20curso%20de%20Piano" target="_blank" class="btn-primary" style="font-size:0.85rem; padding:0.6rem 1.25rem;">💬 Quiero inscribirme</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-plan_bateria" onclick="closeModalOutside(event, 'plan_bateria')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('plan_bateria')">✕</button>
+    <img src="img/plan_bateria.jpg" alt="Plan de estudio Batería" class="modal-plan-img">
+    <div class="modal-footer">
+      <span class="modal-note">Disponibilidad en modalidad presencial y en línea.</span>
+      <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20el%20curso%20de%20Bater%C3%ADa" target="_blank" class="btn-primary" style="font-size:0.85rem; padding:0.6rem 1.25rem;">💬 Quiero inscribirme</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-plan_bajo" onclick="closeModalOutside(event, 'plan_bajo')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('plan_bajo')">✕</button>
+    <img src="img/plan_bajo.jpg" alt="Plan de estudio Bajo" class="modal-plan-img">
+    <div class="modal-footer">
+      <span class="modal-note">Disponibilidad en modalidad presencial y en línea.</span>
+      <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20el%20curso%20de%20Bajo" target="_blank" class="btn-primary" style="font-size:0.85rem; padding:0.6rem 1.25rem;">💬 Quiero inscribirme</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-plan_canto" onclick="closeModalOutside(event, 'plan_canto')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('plan_canto')">✕</button>
+    <img src="img/plan_canto.jpg" alt="Plan de estudio Canto" class="modal-plan-img">
+    <div class="modal-footer">
+      <span class="modal-note">Disponibilidad en modalidad presencial y en línea.</span>
+      <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20el%20curso%20de%20Canto" target="_blank" class="btn-primary" style="font-size:0.85rem; padding:0.6rem 1.25rem;">💬 Quiero inscribirme</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-plan_violin" onclick="closeModalOutside(event, 'plan_violin')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('plan_violin')">✕</button>
+    <img src="img/plan_violin.jpg" alt="Plan de estudio Violín" class="modal-plan-img">
+    <div class="modal-footer">
+      <span class="modal-note">Disponibilidad en modalidad presencial y en línea.</span>
+      <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20el%20curso%20de%20Viol%C3%ADn" target="_blank" class="btn-primary" style="font-size:0.85rem; padding:0.6rem 1.25rem;">💬 Quiero inscribirme</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-plan_pmusical" onclick="closeModalOutside(event, 'plan_pmusical')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('plan_pmusical')">✕</button>
+    <div style="padding:3rem 2rem; text-align:center;">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">🎧</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--gold-light); margin-bottom:0.75rem;">Producción Musical</h3>
+      <p style="color:rgba(255,255,255,0.65); font-size:0.9rem; line-height:1.7; max-width:480px; margin:0 auto 1.5rem;">Módulo I — 12 semanas de formación intensiva en Logic Pro. Aprende composición, mezcla y masterización digital desde cero.</p>
+      <p style="color:rgba(255,255,255,0.4); font-size:0.78rem; margin-bottom:1.5rem;">Plan de estudios detallado disponible. Consulta disponibilidad y fechas de inicio.</p>
+    </div>
+    <div class="modal-footer" style="justify-content:center;">
+      <a href="https://wa.me/50498267794?text=Hola,%20me%20interesa%20el%20curso%20de%20Producci%C3%B3n%20Musical" target="_blank" class="btn-primary" style="font-size:0.85rem; padding:0.6rem 1.25rem;">💬 Consultar sobre este curso</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(id) {
+  document.getElementById('modal-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById('modal-' + id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e, id) {
+  if (e.target === document.getElementById('modal-' + id)) closeModal(id);
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+</script>
+</body>
+</html>
