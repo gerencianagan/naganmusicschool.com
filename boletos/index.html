@@ -144,6 +144,9 @@ button,a.btn{font-family:inherit;font-weight:300;cursor:pointer;border:none;back
 .btn:hover{filter:brightness(1.06);box-shadow:0 8px 32px rgba(255,200,60,.34)}
 .btn:active{transform:translateY(1px)}
 .btn:disabled{background:rgba(255,255,255,.1);color:var(--sutil);box-shadow:none;cursor:not-allowed}
+.btn-pago{background:linear-gradient(180deg,#2FBF6B,#1FA855);color:#06240F;
+  box-shadow:0 6px 26px rgba(47,191,107,.3);width:100%;padding:17px 30px;font-size:1.08rem}
+.btn-pago:hover{filter:brightness(1.07);box-shadow:0 8px 32px rgba(47,191,107,.42)}
 .btn-fantasma{background:rgba(255,255,255,.07);color:var(--blanco);border:1px solid var(--borde);box-shadow:none;backdrop-filter:blur(6px)}
 .btn-fantasma:hover{background:rgba(255,255,255,.13);filter:none;box-shadow:none}
 .btn-txt{color:var(--tenue);font-size:.92rem;padding:6px 2px;border-bottom:1px solid transparent}
@@ -1253,7 +1256,7 @@ function VistaOrden({orden,asientos,onInicio,onSeguirComprando}){
                   </p>
                 )}
 
-                <a className="btn" style={{marginTop:6}} href={linkPago} target="_blank" rel="noopener">
+                <a className="btn btn-pago" style={{marginTop:6}} href={linkPago} target="_blank" rel="noopener">
                   Pagar {L(orden.total)} en BAC
                 </a>
                 <p className="tiny" style={{marginTop:12}}>
