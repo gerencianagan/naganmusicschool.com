@@ -30,7 +30,7 @@
   });
 </script>
 <title>Camino a Belén — Boletos | Nagan Music School</title>
-<meta name="description" content="Musical Camino a Belén. Martes 3 de noviembre, 7:00 PM en el Teatro Saybe. Elige tu butaca y compra en línea. Preventa L. 700 hasta el 15 de octubre.">
+<meta name="description" content="Musical Camino a Belén. Martes 3 de noviembre, 7:00 PM en el Teatro Saybe. Elige tu butaca y compra en línea. Preventa L. 700 hasta el 31 de octubre.">
 
 <!-- Vista previa al compartir el link en WhatsApp, Instagram y Facebook -->
 <meta property="og:type" content="website">
@@ -38,7 +38,7 @@
 <meta property="og:locale" content="es_HN">
 <meta property="og:url" content="https://naganmusicschool.com/boletos/">
 <meta property="og:title" content="Camino a Belén · Compra tus boletos">
-<meta property="og:description" content="Martes 3 de noviembre, 7:00 PM · Teatro Saybe. Elige tu butaca en el mapa. Preventa L. 700 hasta el 15 de octubre.">
+<meta property="og:description" content="Martes 3 de noviembre, 7:00 PM · Teatro Saybe. Elige tu butaca en el mapa. Preventa L. 700 hasta el 31 de octubre.">
 <meta property="og:image" content="https://naganmusicschool.com/boletos/portada.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -437,7 +437,7 @@ const CONFIG = {
 
   // Un solo precio para toda la sala; cambia solo según la fecha
   precios: { preventa: 700, regular: 850 },
-  finPreventa: "2026-10-15T23:59:59",   // último día a precio de preventa
+  finPreventa: "2026-10-31T23:59:59",   // último día a precio de preventa
 
   // Links de pago BAC (uno por monto)
   linksPago: {
@@ -446,7 +446,7 @@ const CONFIG = {
   },
 
   // Minutos que el sistema mantiene apartado un asiento sin pago
-  expiracion: { tarjeta: 15, transferencia: 15, efectivo: 1440 },
+  expiracion: { tarjeta: 1440, transferencia: 1440, efectivo: 1440 },   // minutos
 
   whatsapp:      "50498267794",                              // dígitos; permite mensaje precargado
   whatsappTexto: "+504 9826-7794",                           // como se muestra en pantalla
@@ -501,6 +501,15 @@ const enPreventa   = () => Date.now() <= FIN_PREVENTA;
 const tarifaHoy    = () => enPreventa() ? "preventa" : "regular";
 const precioHoy    = () => CONFIG.precios[tarifaHoy()];
 const diasPreventa = () => Math.ceil((FIN_PREVENTA - Date.now()) / 86400000);
+const dia = ms => new Date(ms).toLocaleDateString("es-HN",{day:"numeric",month:"long"});
+/* "15 minutos", "2 horas", "1 día" — según cuánto sea */
+const plazo = min => {
+  if(min < 60)   return `${min} ${min===1?"minuto":"minutos"}`;
+  if(min < 1440){ const h=Math.round(min/60); return `${h} ${h===1?"hora":"horas"}`; }
+  const d=Math.round(min/1440); return `${d} ${d===1?"día":"días"}`;
+};
+const finPreventaTxt   = () => dia(FIN_PREVENTA);
+const inicioRegularTxt = () => dia(FIN_PREVENTA + 86400000);
 /* El precio queda congelado en el momento de apartar */
 const precioSeat = (asientos, id) => asientos?.[id]?.precio ?? precioHoy();
 
@@ -895,14 +904,14 @@ function Inicio({onEmpezar,onAdmin,onConsultar,libres}){
           {enPreventa() && (
             <div className="precio-h" style={{borderLeftColor:"rgba(255,255,255,.2)"}}>
               <b style={{opacity:.55}}>{L(CONFIG.precios.regular)}</b>
-              <span>Desde el 16 de octubre</span>
+              <span>Desde el {inicioRegularTxt()}</span>
             </div>
           )}
         </div>
         {enPreventa() && (
           <p className="meta" style={{marginTop:-14,marginBottom:26,maxWidth:"46ch"}}>
             Quedan <b className="oro">{diasPreventa()}</b> {diasPreventa()===1?"día":"días"} de preventa.
-            El precio sube el 16 de octubre, pero los mejores asientos no cuestan más: simplemente se van primero.
+            El precio sube el {inicioRegularTxt()}, pero los mejores asientos no cuestan más: simplemente se van primero.
           </p>
         )}
         <div className="cta-row">
@@ -940,7 +949,7 @@ function VistaMapa({asientos,seleccion,setSeleccion,onSeguir,onVolver,choque,lim
         <Pasos actual={0}/>
         <h2 className="serif" style={{fontSize:"1.9rem",marginBottom:6}}>Elige tus asientos</h2>
         <p className="meta" style={{marginBottom:18}}>
-          Toda la sala vale {L(precioHoy())} por persona{enPreventa()?" durante la preventa":""}. Toca las butacas
+          Toda la sala vale {L(precioHoy())} por persona{enPreventa()?` hasta el ${finPreventaTxt()}`:""}. Toca las butacas
           en el mapa, o deja que el sistema te busque los mejores lugares seguidos.
         </p>
         <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:18}} className="no-print">
@@ -1000,13 +1009,13 @@ function VistaDatos({seleccion,onVolver,onApartar,buscarPrevias,procesando}){
   const ops=[
     {id:"tarjeta",n:"Tarjeta de crédito o débito",
      d: seleccion.length>1
-        ? `Enlace seguro de BAC. Tendrás que poner ${seleccion.length} en la casilla de cantidad para pagar las ${seleccion.length} butacas. Apartamos tus asientos ${CONFIG.expiracion.tarjeta} minutos.`
-        : `Enlace seguro de BAC. Apartamos tu asiento ${CONFIG.expiracion.tarjeta} minutos.`,
+        ? `Enlace seguro de BAC. Tendrás que poner ${seleccion.length} en la casilla de cantidad para pagar las ${seleccion.length} butacas. Apartamos tus asientos ${plazo(CONFIG.expiracion.tarjeta)}.`
+        : `Enlace seguro de BAC. Apartamos tu asiento ${plazo(CONFIG.expiracion.tarjeta)}.`,
      off: !CONFIG.linksPago[tarifaHoy()]},
     {id:"transferencia",n:"Transferencia bancaria",
-     d:`Te mostramos las cuentas y nos envías el comprobante. Apartamos tus asientos ${CONFIG.expiracion.transferencia} minutos.`},
+     d:`Te mostramos las cuentas y nos envías el comprobante. Apartamos tus asientos ${plazo(CONFIG.expiracion.transferencia)}.`},
     {id:"efectivo",n:`Efectivo en ${CONFIG.escuela}`,
-     d:`Pagas en la escuela. Apartamos tus asientos ${Math.round(CONFIG.expiracion.efectivo/60)} horas.`}
+     d:`Pagas en la escuela. Apartamos tus asientos ${plazo(CONFIG.expiracion.efectivo)}.`}
   ];
   return (
     <div className="wrap-sm">
@@ -1021,7 +1030,7 @@ function VistaDatos({seleccion,onVolver,onApartar,buscarPrevias,procesando}){
             </div>
           ))}
           <div className="fila-dato">
-            <span>Tarifa</span><span>{enPreventa()?"Preventa, hasta el 15 de octubre":"Precio regular"}</span>
+            <span>Tarifa</span><span>{enPreventa()?`Preventa, hasta el ${finPreventaTxt()}`:"Precio regular"}</span>
           </div>
           <div className="total"><span>Total</span><b>{L(total)}</b></div>
         </div>
