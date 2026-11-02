@@ -1518,6 +1518,115 @@ function Dialogo({datos,onCerrar}){
   );
 }
 
+/* Registro manual: ventas en efectivo, pagos no notificados y taquilla del día */
+function RegistrarVenta({asientos,setDialogo}){
+  const [sel,setSel]=useState([]);
+  const [f,setF]=useState({nombre:"",telefono:"",correo:"",tarifa:tarifaHoy(),pago:"efectivo"});
+  const [guardando,setGuardando]=useState(false);
+  const [hecho,setHecho]=useState(null);
+  const [error,setError]=useState("");
+  const set=(k,v)=>setF(p=>({...p,[k]:v}));
+
+  const precio = f.pago==="cortesia" ? 0 : CONFIG.precios[f.tarifa];
+  const total  = sel.length*precio;
+
+  const guardar=async()=>{
+    if(!sel.length) return setError("Elige al menos una butaca en el mapa.");
+    if(!f.nombre.trim()) return setError("Escribe el nombre de la persona.");
+    if(f.pago!=="cortesia" && f.telefono.replace(/\D/g,"").length<8)
+      return setError("El teléfono necesita al menos 8 dígitos.");
+    setError(""); setGuardando(true);
+    const id=await Store.folio(), clave=nuevaClave();
+    const registro={estado:"confirmado",orden:id,clave,nombre:f.nombre.trim(),telefono:f.telefono,
+                    correo:f.correo.trim(),pago:f.pago,tarifa:f.tarifa,precio,
+                    creada:ahora(),registradaPor:"panel"};
+    const ocupadas=await Store.reservar(ordena(sel),registro);
+    setGuardando(false);
+    if(ocupadas.length){
+      setError(`Estas butacas ya no están libres: ${ordena(ocupadas).join(", ")}. No se registró nada.`);
+      return setSel(s=>s.filter(x=>!ocupadas.includes(x)));
+    }
+    setHecho({id,clave,nombre:f.nombre.trim(),telefono:f.telefono,asientos:ordena(sel),total});
+    setSel([]); setF({nombre:"",telefono:"",correo:"",tarifa:tarifaHoy(),pago:"efectivo"});
+  };
+
+  const wa=o=>{
+    const t=encodeURIComponent(
+      `Hola ${o.nombre}, ¡tus boletos para ${CONFIG.evento} están confirmados!\n\nOrden: ${o.id}\nAsientos: ${o.asientos.join(", ")}\n${CONFIG.fecha}\n${CONFIG.lugar}\n\n${CONFIG.horaLobby} se abre el lobby\n${CONFIG.horaAuditorio} puertas del auditorio\n${CONFIG.hora} inicia la función${urlOrden(o.id,o.clave)?"\n\nAbre tus boletos con código QR aquí:\n"+urlOrden(o.id,o.clave):""}\n\n¡Nos vemos!`);
+    window.open(`https://wa.me/${telWa(o.telefono)}?text=${t}`,"_blank");
+  };
+
+  return (
+    <div>
+      {hecho && (
+        <div className="aviso ok">
+          <b>Orden {hecho.id} registrada y confirmada.</b> {hecho.nombre} · {hecho.asientos.join(", ")} · {L(hecho.total)}
+          <div style={{display:"flex",gap:10,flexWrap:"wrap",marginTop:12}}>
+            <button className="btn-mini" onClick={()=>wa(hecho)}>Enviar boletos por WhatsApp</button>
+            <button className="btn-mini" onClick={()=>setHecho(null)}>Registrar otra venta</button>
+          </div>
+        </div>
+      )}
+
+      <p className="meta" style={{marginBottom:16}}>
+        Para cobros en efectivo, pagos que ya recibiste y ventas en la puerta. La orden queda
+        confirmada de una vez, con el precio que elijas aquí.
+      </p>
+
+      <div style={{display:"grid",gap:16,gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",marginBottom:18}}>
+        <div className="campo" style={{margin:0}}>
+          <label htmlFor="rv-n">Nombre</label>
+          <input id="rv-n" value={f.nombre} onChange={e=>set("nombre",e.target.value)} placeholder="Nombre y apellido"/>
+        </div>
+        <div className="campo" style={{margin:0}}>
+          <label htmlFor="rv-t">Teléfono</label>
+          <input id="rv-t" inputMode="tel" value={f.telefono} onChange={e=>set("telefono",e.target.value)} placeholder="9999-9999"/>
+        </div>
+        <div className="campo" style={{margin:0}}>
+          <label htmlFor="rv-c">Correo</label>
+          <input id="rv-c" type="email" autoCapitalize="none" value={f.correo}
+            onChange={e=>set("correo",e.target.value)} placeholder="opcional"/>
+        </div>
+        <div className="campo" style={{margin:0}}>
+          <label htmlFor="rv-ta">Tarifa</label>
+          <select id="rv-ta" value={f.tarifa} onChange={e=>set("tarifa",e.target.value)} disabled={f.pago==="cortesia"}>
+            <option value="preventa">Preventa · {L(CONFIG.precios.preventa)}</option>
+            <option value="regular">Regular · {L(CONFIG.precios.regular)}</option>
+          </select>
+        </div>
+        <div className="campo" style={{margin:0}}>
+          <label htmlFor="rv-p">Forma de pago</label>
+          <select id="rv-p" value={f.pago} onChange={e=>set("pago",e.target.value)}>
+            <option value="efectivo">Efectivo</option>
+            <option value="transferencia">Transferencia</option>
+            <option value="tarjeta">Tarjeta</option>
+            <option value="cortesia">Cortesía (sin cobro)</option>
+          </select>
+        </div>
+      </div>
+
+      {error && <div className="aviso alerta">{error}</div>}
+
+      <Sala asientos={asientos} seleccion={sel}
+        onAsiento={id=>setSel(s=>s.includes(id)?s.filter(x=>x!==id):[...s,id])}/>
+
+      <div className="barra">
+        <div className="barra-info">
+          {sel.length
+            ? <>{sel.length} {sel.length===1?"butaca":"butacas"} · {ordena(sel).join(", ")}<b>{L(total)}</b></>
+            : <>Elige las butacas en el mapa<b>{L(0)}</b></>}
+        </div>
+        <div style={{display:"flex",gap:10}}>
+          {sel.length>0 && <button className="btn btn-fantasma" onClick={()=>setSel([])}>Limpiar</button>}
+          <button className="btn" disabled={guardando||!sel.length} onClick={guardar}>
+            {guardando?"Registrando…":"Registrar como pagado"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Admin({asientos,onSalir}){
   const [dialogo,setDialogo]=useState(null);
   const [tab,setTab]=useState("ordenes");
@@ -1567,6 +1676,16 @@ function Admin({asientos,onSalir}){
       accion:()=>cambiar(o,"confirmado")
     });
   };
+  const marcarCortesia=o=>setDialogo({
+    titulo:`Convertir ${o.id} en cortesía`,
+    texto:`${o.nombre}\n${o.asientos.length} ${o.asientos.length===1?"butaca":"butacas"}: ${ordena(o.asientos).join(", ")}\n\nEl monto pasa a L. 0 y deja de sumar al ingreso confirmado. Los boletos y sus códigos QR siguen funcionando igual.`,
+    etiqueta:"Marcar como cortesía",
+    accion:()=>{
+      const c={};
+      o.asientos.forEach(id=>{ c[id]={...asientos[id],precio:0,pago:"cortesia"}; });
+      Store.varios(c);
+    }
+  });
   const liberarOrden=o=>setDialogo({
     titulo:`Liberar la orden ${o.id}`,
     texto:`Las butacas de ${o.nombre} (${ordena(o.asientos).join(", ")}) volverán a estar disponibles y sus boletos dejarán de servir.\n\nEsto no se puede deshacer.`,
@@ -1656,7 +1775,7 @@ function Admin({asientos,onSalir}){
           Tarifa vigente hoy: {L(precioHoy())} ({enPreventa()?`preventa, ${diasPreventa()} días restantes`:"precio regular"}).
         </p>
         <div className="tabs">
-          {[["ordenes","Órdenes"],["sala","Mapa de sala"],["puerta","Entrada del teatro"]].map(([k,n])=>(
+          {[["ordenes","Órdenes"],["venta","Registrar venta"],["sala","Mapa de sala"],["puerta","Entrada del teatro"]].map(([k,n])=>(
             <button key={k} className={"tab "+(tab===k?"activo":"")} onClick={()=>setTab(k)}>{n}</button>
           ))}
         </div>
@@ -1723,6 +1842,8 @@ function Admin({asientos,onSalir}){
                               ? <span className="enlace apagado" title="Esta orden ya está pagada">Confirmar</span>
                               : <button className="enlace oro" onClick={()=>confirmarPago(o)}>Confirmar</button>}
                             <button className="enlace verde" onClick={()=>wa(o)}>WhatsApp</button>
+                            {o.pago!=="cortesia" &&
+                              <button className="enlace" onClick={()=>marcarCortesia(o)}>Cortesía</button>}
                             <button className="enlace rojo" onClick={()=>liberarOrden(o)}>Liberar</button>
                           </div>
                         </td>
@@ -1733,6 +1854,8 @@ function Admin({asientos,onSalir}){
                 </table>}
           </>
         )}
+
+        {tab==="venta" && <RegistrarVenta asientos={asientos} setDialogo={setDialogo}/>}
 
         {tab==="sala" && (
           <>
