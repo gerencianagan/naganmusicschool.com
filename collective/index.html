@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nagan Collective · Una casa para nuevas voces</title>
+<meta name="description" content="Nagan Collective es el proyecto artístico de Nagan Music Group: canciones con arreglos y producción de Nagan que salen como Nagan Collective feat. su artista. Próximamente.">
+<meta property="og:title" content="Nagan Collective · Próximamente">
+<meta property="og:description" content="Una casa para nuevas voces. Aplica para ser parte del colectivo.">
+<meta property="og:url" content="https://naganmusicschool.com/collective/">
+<link rel="canonical" href="https://naganmusicschool.com/collective/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Carlito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1A1A2E;--deep:#12121F;--blue:#0F3460;--red:#E94560;--text:#fff;--muted:rgba(255,255,255,.66);--line:rgba(255,255,255,.12);
+  /* Gill Sans es la letra del logo; Lato es su alternativa web */
+  --head:"Gill Sans","Gill Sans MT","Lato",sans-serif;--body:"Calibri Light","Calibri",Carlito,"Segoe UI",system-ui,sans-serif;--r:6px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{font-family:var(--body);font-weight:300;font-size:18px;line-height:1.6;color:var(--text);background:var(--navy)}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--head);font-weight:300;line-height:1.15}
+h2{font-size:clamp(30px,3.8vw,46px)}
+h3{font-size:22px;font-weight:400}
+.eyebrow{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.lead{font-size:20px;color:var(--muted);max-width:620px}
+section{padding:100px 0;border-top:1px solid var(--line)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:15px 26px;border-radius:2px;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-red{background:var(--red);color:#fff}
+.btn-line{border:1px solid rgba(255,255,255,.4);color:#fff}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(26,26,46,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:block}
+.nav .wrap{position:relative;display:flex;align-items:center;justify-content:space-between;height:68px}
+.home{display:flex;align-items:center;gap:12px;text-decoration:none}
+.home .mk{width:38px;height:34px;background:var(--red);-webkit-mask:url(../assets/icon-collective.png) center/contain no-repeat;mask:url(../assets/icon-collective.png) center/contain no-repeat}
+.home img{height:20px;width:auto}
+.nav ul{display:flex;list-style:none;gap:26px;align-items:center;font-size:16px}
+.nav ul a{text-decoration:none;opacity:.75}.nav ul a:hover{opacity:1}
+.nav .btn{padding:11px 18px;opacity:1}
+
+.hero{min-height:calc(100vh - 68px);display:flex;align-items:center;text-align:center;border:0;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(15,52,96,.7),transparent 65%)}
+.hero .wrap{position:relative}
+.iso{width:min(280px,60vw);height:min(244px,52vw);margin:0 auto;background:var(--red);-webkit-mask:url(../assets/icon-collective.png) center/contain no-repeat;mask:url(../assets/icon-collective.png) center/contain no-repeat;animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.04);filter:drop-shadow(0 0 30px rgba(233,69,96,.5))}}
+.word{width:min(560px,82vw);margin:30px auto 0;display:block}
+.soon{display:inline-block;margin-top:30px;font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);border-radius:40px;padding:7px 16px}
+.hero h1{font-size:clamp(28px,3.6vw,44px);margin:26px 0 14px}
+.hero p{color:var(--muted);max-width:580px;margin:0 auto}
+.hero .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.credit{background:var(--deep);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:grid;gap:14px}
+.song{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:center;padding:14px;border-radius:4px;background:rgba(255,255,255,.04)}
+.cover{width:64px;height:64px;border-radius:3px;background:linear-gradient(135deg,var(--blue),var(--red));display:grid;place-items:center}
+.cover i{width:30px;height:26px;background:#fff;-webkit-mask:url(../assets/icon-collective.png) center/contain no-repeat;mask:url(../assets/icon-collective.png) center/contain no-repeat}
+.song b{font-family:var(--head);font-weight:400;display:block}
+.song span{color:var(--muted);font-size:15px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--deep);border:1px solid var(--line);border-radius:var(--r);padding:32px 28px;display:grid;gap:10px;align-content:start}
+.card .n{font-family:var(--head);font-size:34px;font-weight:300;color:var(--red);line-height:1}
+.card p{color:var(--muted);font-size:17px}
+
+.req{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.req div{border-left:2px solid var(--red);padding:4px 0 4px 20px}
+.req p{color:var(--muted);font-size:17px;margin-top:4px}
+
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.fs{border-top:1px solid var(--line);padding-top:20px}
+.fs i{font-style:normal;font-family:var(--head);font-size:13px;font-weight:700;color:var(--red);letter-spacing:.14em}
+.fs h3{font-size:19px;margin:8px 0 6px}
+.fs p{color:var(--muted);font-size:16px}
+
+.apply{text-align:center;background:linear-gradient(180deg,var(--navy),var(--blue))}
+.apply p{color:var(--muted);max-width:600px;margin:14px auto 30px}
+.apply .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.social{margin-top:36px;color:var(--muted);font-size:16px}
+.social a{color:#fff}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:15px;padding:40px 0;background:var(--deep)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer .fam{display:flex;gap:18px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+
+@media (max-width:860px){
+  section{padding:72px 0}
+  .nav ul li:not(:last-child):not(:first-child){display:none}
+  .two,.cards,.req{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr 1fr}
+  .hero{min-height:0;padding:64px 0 80px}
+}
+@media (max-width:560px){.wrap{padding:0 16px}.flow{grid-template-columns:1fr}.home img{display:none}}
+@media (prefers-reduced-motion:reduce){.iso{animation:none}.reveal{opacity:1;transform:none}}
+.evbar{display:flex;justify-content:center;align-items:center;gap:6px 14px;flex-wrap:wrap;background:#C9A227;color:#01172C;text-decoration:none;font-family:"Gotham","Montserrat",sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:8px 16px;text-align:center}
+.evbar .evt{font-weight:600}
+.evbar b{font-weight:600;border-bottom:1px solid currentColor}
+.evbar:hover b{border-bottom-width:2px}
+@media (max-width:560px){.evbar{font-size:10px;letter-spacing:.08em}.evbar .evd{display:none}}
+.totop{position:fixed;left:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(1,23,44,.85);color:#fff;font-size:18px;cursor:pointer;z-index:55;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.totop.show{opacity:1;pointer-events:auto}
+.nav .inicio{opacity:1 !important;font-weight:400}
+</style>
+</head>
+<body>
+
+<nav class="nav"><a class="evbar" href="https://naganmusicschool.com/eventos/"><span class="evt">Próximos eventos</span><span class="evd"> · Recitales del 13 de diciembre</span><b>Comprar boletos →</b></a>
+<div class="wrap">
+  <a class="home" href="../" aria-label="Volver a Nagan"><span class="mk"></span><img src="../assets/collective-wordmark.svg" alt="Nagan Collective"></a>
+  <ul>
+    <li><a class="inicio" href="../">← Inicio</a></li>
+    <li><a href="#que-es">Qué es</a></li>
+    <li><a href="#como">Cómo funciona</a></li>
+    <li><a href="#requisitos">Requisitos</a></li>
+    <li><a class="btn btn-red" href="#aplica">Quiero ser parte</a></li>
+  </ul>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="iso" role="img" aria-label="Isotipo de Nagan Collective"></div>
+  <img class="word" src="../assets/collective-wordmark.svg" alt="Nagan Collective">
+  <span class="soon">Próximamente · 2027</span>
+  <h1>Una casa para nuevas voces.</h1>
+  <p>El proyecto artístico de Nagan Music Group. Producimos canciones y las lanzamos al mundo con el nombre del colectivo y el de quien las canta.</p>
+  <div class="ctas"><a class="btn btn-red" href="#aplica">Quiero ser parte</a><a class="btn btn-line" href="#que-es">Conocer más</a></div>
+</div></header>
+
+<section id="que-es"><div class="wrap two">
+  <div class="reveal">
+    <div class="eyebrow">Qué es</div>
+    <h2>Un colectivo, muchas voces</h2>
+    <p class="lead" style="margin:18px 0">Nagan Collective es el artista principal de cada lanzamiento. Quien canta aparece como colaborador: <b style="color:#fff;font-weight:400">Nagan Collective feat. su nombre</b>. Así, cada canción suma al mismo perfil y cada nuevo artista llega a una audiencia que ya está escuchando.</p>
+    <p class="lead">Nace para dar una plataforma profesional a quienes tienen talento, aunque todavía no tengan los recursos para producir.</p>
+  </div>
+  <div class="credit reveal" aria-label="Así se ven los lanzamientos">
+    <div class="eyebrow" style="margin:0">Así se ven los lanzamientos</div>
+    <div class="song"><div class="cover"><i></i></div><div><b>Nombre de la canción</b><span>Nagan Collective feat. JUMA</span></div></div>
+    <div class="song"><div class="cover"><i></i></div><div><b>Nombre de la canción</b><span>Nagan Collective feat. Tu nombre</span></div></div>
+    <div class="song"><div class="cover"><i></i></div><div><b>Nombre de la canción</b><span>Nagan Collective feat. JUMA &amp; Tu nombre</span></div></div>
+    <p style="color:var(--muted);font-size:15px">Sello: Nagan Music Group · Spotify, Apple Music, YouTube y más de 150 plataformas</p>
+  </div>
+</div></section>
+
+<section id="como"><div class="wrap">
+  <div class="reveal" style="margin-bottom:44px"><div class="eyebrow">Cómo funciona</div><h2>Tú pones la voz. Nosotros, todo lo demás.</h2></div>
+  <div class="cards">
+    <div class="card reveal"><span class="n">01</span><h3>Producción profesional</h3><p>Arreglo y producción de Nagan Music Group, grabación con nuestros músicos y mezcla de un ingeniero especializado, con el estándar de un lanzamiento internacional.</p></div>
+    <div class="card reveal"><span class="n">02</span><h3>Cualquier género</h3><p>Pop, worship, balada, urbano y más, en español e inglés. Lo que importa es tu voz y lo que tienes que decir.</p></div>
+    <div class="card reveal"><span class="n">03</span><h3>Lanzamiento y estrategia</h3><p>Publicación en todas las plataformas, pitch a playlists, contenido para redes y un plan de lanzamiento para cada canción.</p></div>
+  </div>
+</div></section>
+
+<section id="requisitos"><div class="wrap two" style="align-items:start">
+  <div class="reveal"><div class="eyebrow">Lo que buscamos</div><h2>Talento, carácter y compromiso</h2><p class="lead" style="margin-top:18px">No pedimos un número mínimo de seguidores. Buscamos artistas con identidad propia y ganas de trabajar en equipo.</p></div>
+  <div class="req">
+    <div class="reveal"><h3>Tu voz o tu instrumento</h3><p>Afinación, control y una identidad que se reconozca.</p></div>
+    <div class="reveal"><h3>Presencia</h3><p>Una imagen cuidada y auténtica, natural frente a la cámara.</p></div>
+    <div class="reveal"><h3>Redes activas</h3><p>Al menos un perfil con contenido musical y conexión real con tu audiencia.</p></div>
+    <div class="reveal"><h3>Compromiso</h3><p>Puntualidad, apertura a la dirección artística y ganas de crear contenido.</p></div>
+    <div class="reveal"><h3>Desde los 16 años</h3><p>Si eres menor de 18, con autorización de tu madre, padre o tutor.</p></div>
+    <div class="reveal"><h3>Tu material</h3><p>Un demo o video con al menos 2 canciones, tus redes y una breve biografía.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="reveal" style="margin-bottom:44px"><div class="eyebrow">El proceso</div><h2>De tu aplicación a tu lanzamiento</h2></div>
+  <div class="flow reveal">
+    <div class="fs"><i>01</i><h3>Aplicas</h3><p>Envías tu demo, tus redes y tu historia.</p></div>
+    <div class="fs"><i>02</i><h3>Evaluamos</h3><p>Escuchamos tu material y te respondemos en un máximo de 14 días.</p></div>
+    <div class="fs"><i>03</i><h3>Audición</h3><p>Una sesión presencial o por videollamada.</p></div>
+    <div class="fs"><i>04</i><h3>Acuerdo</h3><p>Te explicamos el acuerdo con calma y tienes 7 días para revisarlo.</p></div>
+    <div class="fs"><i>05</i><h3>Producimos</h3><p>Empezamos tu canción y planeamos juntos el lanzamiento.</p></div>
+  </div>
+</div></section>
+
+<section class="apply" id="aplica"><div class="wrap">
+  <div class="eyebrow">Aplicaciones abiertas</div>
+  <h2>¿Quieres ser parte de Nagan Collective?</h2>
+  <p>Escríbenos con tu nombre, tu edad, tu ciudad, el género que te gustaría cantar y el enlace a tu demo o a tus redes.</p>
+  <div class="ctas">
+    <a class="btn btn-red" target="_blank" rel="noopener" href="https://wa.me/50498267794?text=Hola%2C%20quiero%20aplicar%20a%20Nagan%20Collective.%0ANombre%3A%20%0AEdad%3A%20%0ACiudad%3A%20%0AG%C3%A9nero%3A%20%0ADemo%20o%20redes%3A%20">Aplicar por WhatsApp</a>
+  </div>
+  <p class="social">Sigue el proceso del primer lanzamiento en <a href="https://instagram.com/nagancollective" target="_blank" rel="noopener">@nagancollective</a></p>
+</div></section>
+
+<footer><div class="wrap">
+  <div>© 2026 Nagan Music Group · San Pedro Sula, Honduras</div>
+  <div class="fam"><a href="../">Nagan</a><a href="../escuela/">Music School</a><a href="../music-group/">Music Group</a></div>
+</div></footer>
+
+<script>
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+<script>if(new Date()>new Date('2026-12-14T00:00:00-06:00')){document.querySelectorAll('.evbar .evd').forEach(e=>e.remove());document.querySelectorAll('.evbar b').forEach(e=>e.textContent='Ver eventos →')}</script>
+<a class="totop" href="#" aria-label="Volver arriba" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑</a>
+<script>(function(){var b=document.querySelector('.totop');addEventListener('scroll',function(){b.classList.toggle('show',scrollY>900)},{passive:true})})()</script>
+</body>
+</html>

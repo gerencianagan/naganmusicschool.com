@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nagan Music Group · Producción musical y multitracks</title>
+<meta name="description" content="Arreglos y producción musical, multitracks, secuencias y cifrados desde San Pedro Sula, Honduras, para artistas e iglesias de Honduras y de cualquier país.">
+<meta property="og:title" content="Nagan Music Group · Producción musical y multitracks">
+<meta property="og:description" content="Tu canción, con el sonido que imaginas. Arreglos, producción y multitracks para tu banda.">
+<meta property="og:url" content="https://naganmusicschool.com/music-group/">
+<link rel="canonical" href="https://naganmusicschool.com/music-group/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Carlito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--panel:#0B0B0D;--line:rgba(255,255,255,.12);--text:#fff;--muted:rgba(255,255,255,.62);--steel:#335A7E;--sky:#8FB3E8;
+  --head:"Gotham","Montserrat",sans-serif;--body:"Calibri Light","Calibri",Carlito,"Segoe UI",system-ui,sans-serif;--r:6px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{font-family:var(--body);font-weight:300;font-size:18px;line-height:1.6;color:var(--text);background:var(--bg)}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--head);font-weight:300;line-height:1.15}
+h2{font-size:clamp(30px,3.6vw,44px)}
+h3{font-size:21px;font-weight:400}
+.eyebrow{font-family:var(--head);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);margin-bottom:12px}
+.lead{font-size:20px;color:var(--muted);max-width:620px}
+section{padding:104px 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:48px;flex-wrap:wrap}
+.sec-head .lead{max-width:460px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:15px 26px;border-radius:2px;transition:transform .15s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-white{background:#fff;color:#000}
+.btn-line{border:1px solid rgba(255,255,255,.4);color:#fff}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:block}
+.nav .wrap{position:relative;display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+.home{display:flex;align-items:center;gap:12px;text-decoration:none}
+.home .mk{width:30px;height:32px;background:#fff;-webkit-mask:url(../assets/icon-mg.png) center/contain no-repeat;mask:url(../assets/icon-mg.png) center/contain no-repeat}
+.home span{font-family:var(--head);font-size:13px;letter-spacing:.14em;white-space:nowrap}
+.home b{font-weight:600}
+.nav ul{display:flex;list-style:none;gap:26px;align-items:center;font-size:16px}
+.nav ul a{text-decoration:none;opacity:.75}
+.nav ul a:hover{opacity:1}
+.nav .btn{padding:11px 18px;opacity:1}
+.burger{display:none;background:none;border:0;color:#fff;font-size:26px;cursor:pointer}
+
+.hero{min-height:calc(100vh - 68px);display:flex;align-items:center;position:relative;overflow:hidden;border:0}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 40%,rgba(51,90,126,.35),transparent 60%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;width:100%}
+.mark{display:flex;align-items:center;gap:18px;margin-bottom:34px}
+.mark .mk{width:64px;height:68px;background:#fff;-webkit-mask:url(../assets/icon-mg.png) center/contain no-repeat;mask:url(../assets/icon-mg.png) center/contain no-repeat}
+.mark .wm{font-family:var(--head);font-size:24px;letter-spacing:.06em}
+.mark .wm b{font-weight:600}.mark .wm span{font-weight:200;letter-spacing:.12em}
+.hero h1{font-size:clamp(40px,5.2vw,68px);margin:10px 0 22px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.tagline{font-family:var(--head);font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+/* ecualizador animado */
+.eq{display:flex;align-items:flex-end;justify-content:center;gap:10px;height:340px}
+.eq i{display:block;width:26px;border-radius:14px;background:linear-gradient(#fff,rgba(255,255,255,.25));animation:eq 1.6s ease-in-out infinite alternate}
+.eq i:nth-child(2n){background:linear-gradient(var(--sky),rgba(143,179,232,.2))}
+@keyframes eq{0%{height:22%}100%{height:var(--h)}}
+
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.svc div{background:var(--bg);padding:36px 30px;display:grid;gap:10px;align-content:start}
+.svc .n{font-family:var(--head);font-size:12px;color:var(--sky);letter-spacing:.2em}
+.svc p{color:var(--muted);font-size:17px}
+.svc a{font-family:var(--head);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);text-decoration:none;margin-top:6px}
+
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;counter-reset:s}
+.st{border-top:1px solid var(--line);padding-top:22px;position:relative}
+.st:before{counter-increment:s;content:"0" counter(s);font-family:var(--head);font-weight:200;font-size:40px;color:var(--sky);display:block;line-height:1;margin-bottom:12px}
+.st p{color:var(--muted);font-size:16px;margin-top:6px}
+
+.inc{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:32px}
+.box ul{list-style:none;display:grid;gap:10px;margin-top:14px;color:var(--muted)}
+.box li{padding-left:22px;position:relative}
+.box li:before{content:"";position:absolute;left:0;top:.75em;width:10px;height:1px;background:var(--sky)}
+
+.mt{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.tracks{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:8px;font-family:var(--head);font-size:13px}
+.trk{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:14px}
+.trk span{color:var(--muted);letter-spacing:.06em}
+.wave{height:26px;border-radius:3px;background:repeating-linear-gradient(90deg,rgba(143,179,232,.55) 0 2px,transparent 2px 5px);mask:linear-gradient(90deg,#000 var(--a),transparent var(--a),transparent var(--b),#000 var(--b));-webkit-mask:linear-gradient(90deg,#000 var(--a),transparent var(--a),transparent var(--b),#000 var(--b))}
+.trk.on .wave{background:repeating-linear-gradient(90deg,rgba(255,255,255,.85) 0 2px,transparent 2px 5px)}
+
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.tm{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.tm img{aspect-ratio:4/5;width:100%;object-fit:cover;object-position:center 25%;filter:grayscale(1) contrast(1.05)}
+.tm .info{padding:16px}
+.tm .role{font-family:var(--head);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
+.tm b{display:block;font-family:var(--head);font-weight:400;font-size:17px;margin:0 0 2px}
+.tm p{font-size:15px;color:var(--sky)}
+
+.links{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.link-card{display:block;text-decoration:none;border:1px solid var(--line);border-radius:var(--r);padding:34px;transition:border-color .2s,background .2s}
+.link-card:hover{border-color:var(--sky);background:var(--panel)}
+.link-card p{color:var(--muted);margin-top:8px}
+.link-card .go{display:inline-block;margin-top:16px;font-family:var(--head);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
+.link-card.red .go{color:#E94560}.link-card.red:hover{border-color:#E94560}
+
+.final{text-align:center}
+.final p{color:var(--muted);max-width:560px;margin:14px auto 32px}
+.final .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:15px;padding:40px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer .fam{display:flex;gap:18px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+.wa{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:55}
+
+@media (max-width:960px){
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .team{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:860px){
+  body{font-size:17px}
+  section{padding:72px 0}
+  .nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:#000;flex-direction:column;align-items:stretch;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line)}
+  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0}
+  .burger{display:block}
+  .hero{min-height:0;padding:56px 0 72px}
+  .hero .wrap,.mt,.inc,.links{grid-template-columns:1fr}
+  .eq{height:180px;gap:8px}.eq i{width:18px}
+  .svc{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .steps,.team{grid-template-columns:1fr 1fr}
+  .home span{font-size:11px}
+  .mark .wm{font-size:18px}.mark .mk{width:46px;height:50px}
+  .trk{grid-template-columns:84px 1fr}
+}
+@media (prefers-reduced-motion:reduce){.eq i{animation:none;height:var(--h)}.reveal{opacity:1;transform:none}}
+.evbar{display:flex;justify-content:center;align-items:center;gap:6px 14px;flex-wrap:wrap;background:#C9A227;color:#01172C;text-decoration:none;font-family:"Gotham","Montserrat",sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:8px 16px;text-align:center}
+.evbar .evt{font-weight:600}
+.evbar b{font-weight:600;border-bottom:1px solid currentColor}
+.evbar:hover b{border-bottom-width:2px}
+@media (max-width:560px){.evbar{font-size:10px;letter-spacing:.08em}.evbar .evd{display:none}}
+.totop{position:fixed;left:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(1,23,44,.85);color:#fff;font-size:18px;cursor:pointer;z-index:55;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.totop.show{opacity:1;pointer-events:auto}
+.nav .inicio{opacity:1 !important;font-weight:400}
+.vids{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.vid{margin:0}
+.yt{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:var(--r);overflow:hidden;background:#111 center/cover;cursor:pointer}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .2s,transform .4s}
+.yt:hover img{opacity:1;transform:scale(1.03)}
+.yt .play{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.5)}
+.yt .play:after{content:"";position:absolute;left:26px;top:20px;border-style:solid;border-width:12px 0 12px 19px;border-color:transparent transparent transparent #fff}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid figcaption{padding:14px 2px 0;display:grid;gap:2px}
+.vid figcaption b{font-family:var(--head);font-weight:400;font-size:17px}
+.vid figcaption span{color:var(--muted);font-size:15px}
+@media (max-width:860px){.vids{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.vids{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><a class="evbar" href="https://naganmusicschool.com/eventos/"><span class="evt">Próximos eventos</span><span class="evd"> · Recitales del 13 de diciembre</span><b>Comprar boletos →</b></a>
+<div class="wrap">
+  <a class="home" href="../" aria-label="Volver a Nagan"><span class="mk"></span><span><b>NAGAN</b> MUSIC GROUP</span></a>
+  <ul id="menu">
+    <li><a class="inicio" href="../">← Inicio</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#escucha">Escucha</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#multitracks">Multitracks</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a class="btn btn-white" target="_blank" rel="noopener" href="https://wa.me/50498267794?text=Hola%2C%20quiero%20cotizar%20una%20producci%C3%B3n%20con%20Nagan%20Music%20Group">Cotizar</a></li>
+  </ul>
+  <button class="burger" aria-label="Menú" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="mark"><span class="mk"></span><span class="wm"><b>NAGAN</b> <span>MUSIC GROUP</span></span></div>
+    <div class="tagline">Arreglos · Producción musical · Multitracks</div>
+    <h1>Tu canción, con el sonido que imaginas.</h1>
+    <p class="lead">Arreglos y producción musical para artistas e iglesias de Honduras y de cualquier país. Diseñamos el arreglo de tu canción, coordinamos a los músicos que la graban y la acompañamos hasta la mezcla. Y multitracks para que tu banda suene completa en vivo.</p>
+    <div class="ctas">
+      <a class="btn btn-white" target="_blank" rel="noopener" href="https://wa.me/50498267794?text=Hola%2C%20quiero%20cotizar%20una%20producci%C3%B3n%20con%20Nagan%20Music%20Group">Cotizar mi canción</a>
+      <a class="btn btn-line" target="_blank" rel="noopener" href="https://wa.me/50498267794?text=Hola%2C%20quiero%20el%20cat%C3%A1logo%20de%20multitracks%20de%20Nagan">Pedir multitracks</a>
+    </div>
+  </div>
+  <div class="eq" aria-hidden="true">
+    <i style="--h:46%;animation-delay:-.2s"></i><i style="--h:78%;animation-delay:-.9s"></i><i style="--h:60%;animation-delay:-.4s"></i><i style="--h:100%;animation-delay:-1.2s"></i><i style="--h:70%;animation-delay:-.6s"></i><i style="--h:88%;animation-delay:-1.4s"></i><i style="--h:52%;animation-delay:-.1s"></i>
+  </div>
+</div></header>
+
+<section id="servicios"><div class="wrap">
+  <div class="sec-head reveal"><div><div class="eyebrow">Lo que hacemos</div><h2>Del demo a las plataformas</h2></div><p class="lead">Un solo equipo para producir tu música, prepararla para el escenario y publicarla.</p></div>
+  <div class="svc reveal">
+    <div><span class="n">01</span><h3>Arreglos y producción</h3><p>El corazón de nuestro trabajo: estructura, armonía, instrumentación y la maqueta completa de tu canción, hasta tenerla lista para grabar y publicar.</p><a target="_blank" rel="noopener" href="https://wa.me/50498267794?text=Hola%2C%20quiero%20cotizar%20una%20producci%C3%B3n">Cotizar →</a></div>
+    <div><span class="n">02</span><h3>Multitracks</h3><p>Las pistas separadas de nuestras producciones, con click, guía de voz y secuencias, listas para tu banda de alabanza o tu show en vivo.</p><a href="#multitracks">Ver más →</a></div>
+    <div><span class="n">03</span><h3>Cifrados y guías</h3><p>Cifrados y guías de ensayo de cada canción producida, para que tu equipo la aprenda rápido y la toque igual que la grabación.</p><a target="_blank" rel="noopener" href="https://wa.me/50498267794?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20cifrados%20y%20gu%C3%ADas">Preguntar →</a></div>
+    <div><span class="n">04</span><h3>Músicos para tu canción</h3><p>A partir del arreglo, nuestros músicos graban voces, batería, bajo, guitarras, teclados y vientos desde sus propios equipos, según lo que tu canción necesite.</p><a target="_blank" rel="noopener" href="https://wa.me/50498267794?text=Hola%2C%20quiero%20grabar%20con%20Nagan%20Music%20Group">Preguntar →</a></div>
+    <div><span class="n">05</span><h3>Publicación</h3><p>Lanza tu canción en Spotify, Apple Music y YouTube con tu propio nombre, o en colaboración con nosotros como Nagan Collective feat. tú.</p><a href="../collective/">Conocer Collective →</a></div>
+    <div><span class="n">06</span><h3>Aprende a producir</h3><p>Clase individual de Producción Musical con Juan Marcos Ávila en Nagan Music School: produce desde cero en tu propia computadora.</p><a href="../escuela/#cursos">Ver el curso →</a></div>
+  </div>
+</div></section>
+
+<section id="escucha"><div class="wrap">
+  <div class="sec-head reveal"><div><div class="eyebrow">Escucha nuestro trabajo</div><h2>Producciones recientes</h2></div><p class="lead">Algunos de los artistas e iglesias con los que hemos trabajado en arreglos y producción.</p></div>
+  <div class="vids">
+    <figure class="vid reveal"><button class="yt" data-id="7amXKjmEDWk" aria-label="Reproducir Desierto en Paraíso"><img src="https://i.ytimg.com/vi/7amXKjmEDWk/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play"></span></button><figcaption><b>Desierto en Paraíso</b><span>Hannah Ponce</span></figcaption></figure>
+    <figure class="vid reveal"><button class="yt" data-id="40pRg2i3DZo" aria-label="Reproducir De Regreso A Mi Señor"><img src="https://i.ytimg.com/vi/40pRg2i3DZo/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play"></span></button><figcaption><b>De Regreso A Mi Señor</b><span>Ashley Ardiano e Iglesia de Cristo Dulce Refugio</span></figcaption></figure>
+    <figure class="vid reveal"><button class="yt" data-id="y5yki8HMMSg" aria-label="Reproducir Sopla (Como en Pentecostés)"><img src="https://i.ytimg.com/vi/y5yki8HMMSg/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play"></span></button><figcaption><b>Sopla (Como en Pentecostés)</b><span>Gerson Reyes</span></figcaption></figure>
+    <figure class="vid reveal"><button class="yt" data-id="745gho9hn_Q" aria-label="Reproducir Medley: Mis Enemigos Volvieron Atrás · Poder de Jehová · Abrió el Mar"><img src="https://i.ytimg.com/vi/745gho9hn_Q/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play"></span></button><figcaption><b>Medley: Mis Enemigos Volvieron Atrás · Poder de Jehová · Abrió el Mar</b><span>Vástago Las Vegas</span></figcaption></figure>
+    <figure class="vid reveal"><button class="yt" data-id="YpR-8fNK5vM" aria-label="Reproducir Medley El Espíritu y la Novia"><img src="https://i.ytimg.com/vi/YpR-8fNK5vM/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play"></span></button><figcaption><b>Medley El Espíritu y la Novia</b><span>Hannah Ponce</span></figcaption></figure>
+    <figure class="vid reveal"><button class="yt" data-id="uJaS94ic-nE" aria-label="Reproducir Venga Tu Reino"><img src="https://i.ytimg.com/vi/uJaS94ic-nE/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play"></span></button><figcaption><b>Venga Tu Reino</b><span>Hannah Ponce</span></figcaption></figure>
+    <figure class="vid reveal"><button class="yt" data-id="DlC6ez4FyIk" aria-label="Reproducir Gloria Futura"><img src="https://i.ytimg.com/vi/DlC6ez4FyIk/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play"></span></button><figcaption><b>Gloria Futura</b><span>Olivos Verdes</span></figcaption></figure>
+    <figure class="vid reveal"><button class="yt" data-id="-SjK_GBgGwA" aria-label="Reproducir Camino, Verdad y Vida"><img src="https://i.ytimg.com/vi/-SjK_GBgGwA/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play"></span></button><figcaption><b>Camino, Verdad y Vida</b><span>Olivos Verdes</span></figcaption></figure>
+  </div>
+</div></section>
+
+<section id="proceso"><div class="wrap">
+  <div class="sec-head reveal"><div><div class="eyebrow">Cómo trabajamos</div><h2>De la idea a la canción terminada</h2></div><p class="lead">Tú defines la visión. Nosotros la convertimos en un arreglo y una producción que compiten con cualquier lanzamiento internacional. También hemos producido proyectos grabados en vivo.</p></div>
+  <div class="steps reveal">
+    <div class="st"><h3>Escuchamos</h3><p>Nos cuentas tu canción, tus referencias y lo que quieres transmitir. Te enviamos la cotización.</p></div>
+    <div class="st"><h3>Arreglo y maqueta</h3><p>Armamos estructura y arreglo, y una primera versión con piano, batería, bajo y vientos programados.</p></div>
+    <div class="st"><h3>Grabación</h3><p>Enviamos el arreglo a nuestros músicos, que graban sus partes desde sus equipos. La voz principal la grabamos nosotros, o la grabas tú desde el país donde estés.</p></div>
+    <div class="st"><h3>Mezcla y master</h3><p>Tu canción pasa a un ingeniero de mezcla especializado, que la deja lista para plataformas y radio.</p></div>
+    <div class="st"><h3>Entrega</h3><p>Recibes tu canción final y, si lo pides, los multitracks y cifrados para tocarla en vivo.</p></div>
+  </div>
+  <div class="inc reveal" style="margin-top:48px">
+    <div class="box"><h3>Incluido en toda producción</h3><ul><li>Arreglo y dirección musical</li><li>Bajo y guitarras grabados por músicos</li><li>Programación de teclados, synths y pads</li><li>Edición y afinación de voces</li><li>Revisiones antes de la versión final</li></ul></div>
+    <div class="box"><h3>Puedes agregar</h3><ul><li>Batería real grabada</li><li>Vientos reales</li><li>Voces adicionales y coros</li><li>Multitracks y cifrados de tu canción</li><li>Publicación con tu nombre o como Nagan Collective feat. tú</li></ul><p style="color:var(--muted);margin-top:16px;font-size:16px">Trabajamos con paquetes Esencial, Estándar y Premium. Te recomendamos el que necesita tu canción al cotizar.</p></div>
+  </div>
+</div></section>
+
+<section id="multitracks"><div class="wrap mt">
+  <div class="reveal">
+    <div class="eyebrow">Multitracks</div>
+    <h2>Que tu banda suene como la grabación</h2>
+    <p class="lead" style="margin:16px 0 26px">Cada canción que producimos tiene sus pistas separadas, listas para cargar en tu secuenciador y tocar en vivo con tu equipo.</p>
+    <div class="box" style="padding:24px 26px"><ul style="margin:0"><li>Pistas por instrumento: batería, bajo, guitarras, teclados, pads, vientos y voces</li><li>Click y guía hablada de estructura</li><li>Cifrado de la canción</li><li>Disponibles en suscripción o por canción</li></ul></div>
+    <div style="margin-top:26px"><a class="btn btn-white" target="_blank" rel="noopener" href="https://wa.me/50498267794?text=Hola%2C%20quiero%20el%20cat%C3%A1logo%20de%20multitracks%20de%20Nagan">Pedir catálogo por WhatsApp</a></div>
+  </div>
+  <div class="tracks reveal" title="Toca una pista para activarla o silenciarla">
+    <div class="trk on"><span>CLICK</span><div class="wave" style="--a:100%;--b:100%"></div></div>
+    <div class="trk on"><span>GUÍA</span><div class="wave" style="--a:8%;--b:20%"></div></div>
+    <div class="trk"><span>BATERÍA</span><div class="wave" style="--a:100%;--b:100%"></div></div>
+    <div class="trk"><span>BAJO</span><div class="wave" style="--a:4%;--b:10%"></div></div>
+    <div class="trk"><span>GUITARRAS</span><div class="wave" style="--a:30%;--b:40%"></div></div>
+    <div class="trk"><span>KEYS</span><div class="wave" style="--a:100%;--b:100%"></div></div>
+    <div class="trk"><span>PADS</span><div class="wave" style="--a:100%;--b:100%"></div></div>
+    <div class="trk"><span>VIENTOS</span><div class="wave" style="--a:12%;--b:60%"></div></div>
+    <div class="trk"><span>VOCES</span><div class="wave" style="--a:20%;--b:28%"></div></div>
+  </div>
+</div></section>
+
+<section id="equipo"><div class="wrap">
+  <div class="sec-head reveal"><div><div class="eyebrow">Equipo</div><h2>Los músicos detrás de cada canción</h2></div><p class="lead">El mismo equipo que forma músicos en Nagan Music School produce, graba y prepara cada canción.</p></div>
+  <div class="team">
+    <div class="tm reveal"><img src="../img/teacher_pmusical.jpg" alt="Juan Marcos Ávila" loading="lazy"><div class="info"><b>Juan Marcos Ávila</b><p>Director y productor</p></div></div>
+    <div class="tm reveal"><img src="../img/teacher_piano.jpg" alt="Deuel Morales" loading="lazy"><div class="info"><b>Deuel Morales</b><p>Teclados, programación y cifrados</p></div></div>
+    <div class="tm reveal"><img src="../img/teacher_guitarra.jpg" alt="Jorge Castellanos" loading="lazy"><div class="info"><b>Jorge Castellanos</b><p>Guitarras y secuencias</p></div></div>
+    <div class="tm reveal"><img src="../img/teacher_bajo.jpg" alt="Jarib Laínez" loading="lazy"><div class="info"><b>Jarib Laínez</b><p>Bajo eléctrico</p></div></div>
+    <div class="tm reveal"><img src="../img/teacher_canto.jpg" alt="Dariela Pérez" loading="lazy"><div class="info"><b>Dariela Pérez</b><p>Voces y arreglos vocales</p></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap links">
+  <a class="link-card reveal red" href="../collective/"><div class="eyebrow" style="color:#E94560">Nagan Collective</div><h3>Publica tu música con nosotros</h3><p>Nuestro proyecto artístico: canciones que salen como Nagan Collective feat. su artista.</p><span class="go">Conocer Collective →</span></a>
+  <a class="link-card reveal" href="../escuela/"><div class="eyebrow" style="color:#C9A227">Nagan Music School</div><h3>Aprende a tocar y a producir</h3><p>Clases de instrumento, canto y producción musical, presenciales y en línea.</p><span class="go" style="color:#C9A227">Ir a la escuela →</span></a>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <div class="eyebrow">Hablemos de tu canción</div>
+  <h2>¿Listo para producir?</h2>
+  <p>Escríbenos con tu idea, tus referencias y tu fecha ideal de lanzamiento. Te respondemos con una propuesta.</p>
+  <div class="ctas"><a class="btn btn-white" target="_blank" rel="noopener" href="https://wa.me/50498267794?text=Hola%2C%20quiero%20cotizar%20una%20producci%C3%B3n%20con%20Nagan%20Music%20Group">Cotizar por WhatsApp</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>© 2026 Nagan S de R.L. · San Pedro Sula, Honduras</div>
+  <div class="fam"><a href="../">Nagan</a><a href="../escuela/">Music School</a><a href="../collective/">Collective</a><a href="https://naganmusicschool.com/eventos/">Eventos</a></div>
+</div></footer>
+<a class="wa" target="_blank" rel="noopener" href="https://wa.me/50498267794?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20Nagan%20Music%20Group" aria-label="WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></a>
+<script>
+document.querySelectorAll('.nav ul a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')));
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+// pistas: al tocar una, se activa/silencia como en un secuenciador
+document.querySelectorAll('.trk').forEach(t=>t.addEventListener('click',()=>t.classList.toggle('on')));
+// videos: el reproductor de YouTube carga solo al dar play
+document.querySelectorAll('.yt').forEach(b=>b.addEventListener('click',()=>{b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&rel=0" title="Video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'}));
+</script>
+<script>if(new Date()>new Date('2026-12-14T00:00:00-06:00')){document.querySelectorAll('.evbar .evd').forEach(e=>e.remove());document.querySelectorAll('.evbar b').forEach(e=>e.textContent='Ver eventos →')}</script>
+<a class="totop" href="#" aria-label="Volver arriba" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑</a>
+<script>(function(){var b=document.querySelector('.totop');addEventListener('scroll',function(){b.classList.toggle('show',scrollY>900)},{passive:true})})()</script>
+</body>
+</html>
